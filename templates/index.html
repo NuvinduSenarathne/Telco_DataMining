@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Telco Churn Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet"> 
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
+body {
+    height: 95vh;
+    padding: 25px;
+    background: linear-gradient(to top right, #cc2b5e 0%, #753a88 100%);
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: center;
+}
+
+.header_container {
+    width: 100%;
+    height: 60px;
+    background-color: gainsboro;
+    border: 5px solid grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.header_container h1 {
+    color: crimson;
+    font-family: 'Dosis', sans-serif;
+}
+
+.body_container {
+    width: 100%;
+    background-color: whitesmoke;
+    border: 5px solid grey;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+    padding: 20px 0px;
+}
+
+.box_container {
+    width: 1220px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box_container .box {
+    height: 40px;
+    width: 400px;
+    display: inline-block;
+}
+
+.box_container .box label {
+    width: 180px;
+    display: inline-block;
+    font-size: 18px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.box_container .box input[type="text"] {
+    width: 176px;
+    border: 2px solid grey;
+    background-color: gainsboro;
+}
+
+.box_container .box select {
+    width: 180px;
+    border: 2px solid grey;
+    background-color: gainsboro;
+}
+
+.btn_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_container button {
+    width: 480px;
+    height: 35px;
+    background-color: crimson;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid grey;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.predict_container {
+    width: 100%;
+    background-color: whitesmoke;
+    border: 5px solid grey;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+@media (max-width: 1360px) {
+    .box_container {
+    width: 810px;
+    }
+
+    .btn_container button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 925px) {
+    .box_container {
+    width: 300px;
+    }
+
+    .btn_container button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    body {
+    height: auto;
+    padding: 5px;
+}
+
+.header_container {
+    height: 30px;
+    border: 2px solid grey;
+    margin-bottom: 5px;
+}
+
+.header_container h1 {
+    font-size: 14px;
+}
+
+.body_container {
+    border: 2px solid grey;
+    margin-bottom: 5px;
+    padding: 5px 0px;
+}
+
+.box_container {
+    width: 180px;
+}
+
+.box_container .box {
+    height: 30px;
+    width: 160px;
+    display: inline-block;
+}
+
+.box_container .box label {
+    width: 100px;
+    font-size: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.box_container .box select {
+    width: 180px;
+    font-size: 10px;
+}
+
+.btn_container button {
+    width: 1800px;
+    height: 30px;
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.predict_container {
+    border: 2px solid grey;
+    margin-bottom: 5px;
+    font-size: 10px;
+    padding: 10px 0px;
+}
+}
+
+    </style>
+</head>
+<body>
+    <div class="header_container">
+        <h1>Telco Customer Churn Prediction</h1>
+    </div>
+    <div class="body_container">
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="box_container">
+                <div class="box">
+                    <label>Gender : </label>
+                    <input type="text" name="Gender" required="required" />
+                </div>
+                <div class="box">
+                    <label>Senior Citizen : </label>
+                    <input type="text" name="Senior Citizen"required="required" />
+                </div>
+                <div class="box">
+                    <label>Partner : </label>
+                    <input type="text" name="Partner" required="required" />
+                </div>
+                <div class="box">
+                    <label>Dependents : </label>
+                    <input type="text" name="Dependents" required="required" />
+                </div>
+                <div class="box">
+                    <label>Phone Service : </label>
+                    <input type="text" name="Phone Service" required="required" />
+                </div>
+                <div class="box">
+                    <label>Multiple Lines : </label>
+                    <input type="text" name="Multiple Lines" required="required" />
+                </div>
+                <div class="box">
+                    <label>Online Security : </label>
+                    <input type="text" name="Online Security" required="required" />
+                </div>
+                <div class="box">
+                    <label>Online Backup : </label>
+                    <input type="text" name="Online Backup" required="required" />
+                </div>
+                <div class="box">
+                    <label>Device Protection : </label>
+                    <input type="text" name="Device Protection" required="required" />
+                </div>
+                <div class="box">
+                    <label>Streaming TV : </label>
+                    <input type="text" name="Streaming TV" required="required" />
+                </div>
+                <div class="box">
+                    <label>Streaming Movies : </label>
+                    <input type="text" name="Streaming Movies" required="required" />
+                </div>
+                <div class="box">
+                    <label>Paperless Billing : </label>
+                    <input type="text" name="Paperless Billing" required="required" />
+                </div>
+                <div class="box">
+                    <label>Monthly Charges : </label>
+                    <input type="text" name="Monthly Charges" required="required" />
+                </div>
+                <div class="box">
+                    <label>Total Charges : </label>
+                    <input type="text" name="Total Charges" required="required" />
+                </div>
+                <div class="box">
+                    <label>Tech Support : </label>
+                    <input type="text" name="Tech Support" required="required" />
+                </div>
+                <div class="box">
+                    <label>Tenure Months : </label>
+                    <select name="Tenure Months" id="Tenure Months">
+                        <option value="Tenure Months_1 - 12">Tenure Months_1 - 12</option>
+                        <option value="Tenure Months_13 - 24">Tenure Months_13 - 24</option>
+                        <option value="Tenure Months_25 - 36">Tenure Months_25 - 36</option>
+                        <option value="Tenure Months_37 - 48">Tenure Months_37 - 48</option>
+                        <option value="Tenure Months_49 - 60">Tenure Months_49 - 60</option>
+                        <option value="Tenure Months_61 - 72">Tenure Months_61 - 72</option>
+                    </select>
+                </div>
+                <div class="box">
+                    <label>Payment Method : </label>
+                    <select name="Payment Method" id="Payment Method">
+                        <option value="Payment Method_Bank transfer (automatic)">Bank transfer (automatic)</option>
+                        <option value="Payment Method_Credit card (automatic)">Credit card (automatic)</option>
+                        <option value="Payment Method_Electronic check">Electronic check</option>
+                        <option value="Payment Method_Mailed check">Mailed check</option>
+                    </select>
+                </div>
+                <div class="btn_container">
+                    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="predict_container">
+        {{ prediction_text }}
+    </div>
+</body>
+</html>
