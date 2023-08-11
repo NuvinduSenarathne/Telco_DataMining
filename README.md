@@ -1,5 +1,4 @@
 # Churn Prediction for Telecommunications Company
-**Language** - Python<br>
 **Project** - 3<sup>rd</sup> Year Data Science (SLIIT)<br>
 **Specification** - ML based Web Application<br>
 **Overview** -
